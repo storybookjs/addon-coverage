@@ -4,8 +4,22 @@ import PropTypes from 'prop-types';
 import { Button } from './Button';
 import './header.css';
 
-export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
-  <header>
+export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => {
+  let loggedInBit
+  if (user) {
+    loggedInBit = <>
+      <span className="welcome">
+        Welcome, <b>{user.name}</b>!
+      </span>
+      <Button size="small" onClick={onLogout} label="Log out" />
+    </>
+  } else {
+    loggedInBit = <>
+      <Button size="small" onClick={onLogin} label="Log in" />
+      <Button primary size="small" onClick={onCreateAccount} label="Sign up" />
+    </>
+  }
+  return (<header>
     <div className="wrapper">
       <div>
         <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
@@ -27,18 +41,11 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
         <h1>Acme</h1>
       </div>
       <div>
-        {user ? (
-          <Button size="small" onClick={onLogout} label="Log out" />
-        ) : (
-          <>
-            <Button size="small" onClick={onLogin} label="Log in" />
-            <Button primary size="small" onClick={onCreateAccount} label="Sign up" />
-          </>
-        )}
+        {loggedInBit}
       </div>
     </div>
-  </header>
-);
+  </header>)
+};
 
 Header.propTypes = {
   user: PropTypes.shape({}),

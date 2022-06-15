@@ -5,10 +5,15 @@ import "./button.css";
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
+export const Button = ({ primary, loading, backgroundColor, size, label, ...props }) => {
   const mode = primary
     ? "storybook-button--primary"
     : "storybook-button--secondary";
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
   return (
     <button
       type="button"
@@ -28,6 +33,10 @@ Button.propTypes = {
    * Is this the principal call to action on the page?
    */
   primary: PropTypes.bool,
+  /**
+   * Whether or not to display a loading state
+   */
+  loading: PropTypes.bool,
   /**
    * What background color to use
    */

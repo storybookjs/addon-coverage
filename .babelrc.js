@@ -4,6 +4,7 @@ module.exports = {
     "@babel/preset-typescript",
     "@babel/preset-react",
   ],
+  ignore: ["./src/typings.d.ts"],
   env: {
     esm: {
       presets: [
