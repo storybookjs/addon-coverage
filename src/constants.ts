@@ -1,11 +1,30 @@
-export const ADDON_ID = "storybook/my-addon";
-export const TOOL_ID = `${ADDON_ID}/tool`;
-export const PANEL_ID = `${ADDON_ID}/panel`;
-export const TAB_ID = `${ADDON_ID}/tab`;
-export const PARAM_KEY = `myAddonParameter`;
+export const defaultExtensions = [
+  ".js",
+  ".cjs",
+  ".mjs",
+  ".ts",
+  ".tsx",
+  ".jsx",
+  ".vue",
+  ".svelte",
+];
+const testFileExtensions = defaultExtensions
+  .map((extension) => extension.slice(1))
+  .join(",");
 
-export const EVENTS = {
-  RESULT: `${ADDON_ID}/result`,
-  REQUEST: `${ADDON_ID}/request`,
-  CLEAR: `${ADDON_ID}/clear`,
-};
+export const defaultExclude = [
+  "coverage/**",
+  "packages/*/test{,s}/**",
+  "**/*.d.ts",
+  "test{,s}/**",
+  `test{,-*}.{${testFileExtensions}}`,
+  `**/*{.,-}{spec,stories,types}.{${testFileExtensions}}`,
+  "**/__tests__/**",
+  "**/*-entry.js",
+
+  /* Exclude common development tool configuration files */
+  "**/{ava,babel,nyc}.config.{js,cjs,mjs}",
+  "**/jest.config.{js,cjs,mjs,ts}",
+  "**/{karma,rollup,webpack}.config.js",
+  "**/.{eslint,mocha}rc.{js,cjs}",
+];

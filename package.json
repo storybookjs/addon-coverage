@@ -3,7 +3,12 @@
   "version": "0.0.0",
   "description": "Tools to support code coverage in Storybook",
   "keywords": [
-    "storybook-addons", "coverage", "test", "testing", "test-runner", "storybook-addons"
+    "storybook-addons",
+    "coverage",
+    "test",
+    "testing",
+    "test-runner",
+    "storybook-addons"
   ],
   "repository": {
     "type": "git",
@@ -13,7 +18,7 @@
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/ts/index.d.ts",
+  "types": "dist/ts/types.d.ts",
   "files": [
     "dist/**/*",
     "README.md",
@@ -28,14 +33,12 @@
     "buildTsc": "tsc --declaration --emitDeclarationOnly --outDir ./dist/ts",
     "prebuild": "yarn clean",
     "build": "concurrently \"yarn buildBabel\" \"yarn buildTsc\"",
-    "build:watch": "concurrently \"yarn buildBabel:esm -- --watch\" \"yarn buildTsc -- --watch\"",
+    "build:watch": "concurrently \"yarn buildBabel:cjs -- --watch\" \"yarn buildTsc -- --watch\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "start": "concurrently \"yarn build:watch\" \"yarn storybook -- --no-manager-cache --quiet\"",
     "build-storybook": "build-storybook",
-    "prerelease": "zx scripts/prepublish-checks.mjs",
-    "release": "yarn build && auto shipit",
-    "eject-ts": "zx scripts/eject-typescript.mjs"
+    "release": "yarn build && auto shipit"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
@@ -44,36 +47,17 @@
     "@babel/preset-react": "^7.12.5",
     "@babel/preset-typescript": "^7.13.0",
     "@storybook/addon-essentials": "^6.4.0",
+    "@storybook/addon-interactions": "^6.5.8",
     "@storybook/react": "^6.4.0",
+    "@storybook/testing-library": "^0.0.12",
     "auto": "^10.3.0",
-    "babel-loader": "^8.1.0",
-    "boxen": "^5.0.1",
     "concurrently": "^6.2.0",
-    "dedent": "^0.7.0",
     "prettier": "^2.3.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.2.4",
-    "zx": "^1.14.1"
-  },
-  "peerDependencies": {
-    "@storybook/addons": "^6.4.0",
-    "@storybook/api": "^6.4.0",
-    "@storybook/components": "^6.4.0",
-    "@storybook/core-events": "^6.4.0",
-    "@storybook/theming": "^6.4.0",
-    "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0"
-  },
-  "peerDependenciesMeta": {
-    "react": {
-      "optional": true
-    },
-    "react-dom": {
-      "optional": true
-    }
+    "typescript": "^4.2.4"
   },
   "publishConfig": {
     "access": "public"
@@ -81,8 +65,16 @@
   "storybook": {
     "displayName": "Addon coverage",
     "supportedFrameworks": [
-      "react", "vue", "angular", "web-components", "ember", "html", "svelte", "preact", "react-native"
+      "react",
+      "preact",
+      "vue",
+      "web-components",
+      "html"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
+  },
+  "dependencies": {
+    "@types/babel__core": "^7.1.19",
+    "babel-plugin-istanbul": "^6.1.1"
   }
 }
