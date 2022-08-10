@@ -1,3 +1,15 @@
+# v0.0.3 (Wed Aug 10 2022)
+
+#### 🐛 Bug Fix
+
+- Fix: update babel targets to support Storybook 7.0 [#3](https://github.com/storybookjs/addon-coverage/pull/3) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.2 (Mon Jul 11 2022)
 
 #### 🐛 Bug Fix
