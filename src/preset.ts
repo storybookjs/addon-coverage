@@ -7,6 +7,7 @@ export const babel = async (
   babelConfig: TransformOptions,
   options: Options & AddonOptions
 ) => {
+  babelConfig.plugins ||= [];
   babelConfig.plugins.push([
     "istanbul",
     {
