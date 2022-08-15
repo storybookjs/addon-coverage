@@ -1,3 +1,15 @@
+# v0.0.4 (Mon Aug 15 2022)
+
+#### 🐛 Bug Fix
+
+- fix scenario where plugins do not exist [#4](https://github.com/storybookjs/addon-coverage/pull/4) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.3 (Wed Aug 10 2022)
 
 #### 🐛 Bug Fix
