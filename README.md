@@ -41,7 +41,7 @@ The available options are as follows:
 
 | Option name | Description                                                                              | Type            | Default                                                                          |
 | ----------- | ---------------------------------------------------------------------------------------- | --------------- | -------------------------------------------------------------------------------- |
-| `cwd`       | Set the working directory                                                                | `String`        | `['**']`                                                                         |
+| `cwd`       | Set the working directory                                                                | `String`        | `process.cwd()`                                                                         |
 | `include`   | See [here](https://github.com/istanbuljs/nyc#selecting-files-for-coverage) for more info | `Array<String>` | `['**']`                                                                         |
 | `exclude`   | See [here](https://github.com/istanbuljs/nyc#selecting-files-for-coverage) for more info | `Array<String>` | [list](https://github.com/storybookjs/addon-coverage/blob/main/src/constants.js) |
 | `extension` | List of extensions that nyc should attempt to handle in addition to `.js`                | `Array<String>` | `['.js', '.cjs', '.mjs', '.ts', '.tsx', '.jsx', '.vue', '.svelte]`               |
