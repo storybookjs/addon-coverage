@@ -48,8 +48,13 @@ The available options are as follows:
 
 ### Development scripts
 
-- `yarn start` runs babel in watch mode and starts Storybook
+- `yarn start` runs babel in watch mode
 - `yarn build` build and package your addon code
+
+To run the examples, choose one of the projects in the `examples` directory then run:
+- `yarn` to install dependencies and link the addon locally
+- `yarn storybook` to run Storybook
+- `yarn test-storybook --coverage` to test coverage report generation
 
 ### License
 
