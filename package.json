@@ -35,9 +35,7 @@
     "build": "concurrently \"yarn buildBabel\" \"yarn buildTsc\"",
     "build:watch": "concurrently \"yarn buildBabel:cjs -- --watch\" \"yarn buildTsc -- --watch\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "start-storybook -p 6006",
-    "start": "concurrently \"yarn build:watch\" \"yarn storybook -- --no-manager-cache --quiet\"",
-    "build-storybook": "build-storybook",
+    "start": "yarn build:watch",
     "release": "yarn build && auto shipit"
   },
   "devDependencies": {
@@ -46,10 +44,7 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "@babel/preset-typescript": "^7.13.0",
-    "@storybook/addon-essentials": "^6.4.0",
-    "@storybook/addon-interactions": "^6.5.8",
-    "@storybook/react": "^6.4.0",
-    "@storybook/testing-library": "^0.0.12",
+    "@storybook/core-common": "^7.0.0-alpha.34",
     "auto": "^10.3.0",
     "concurrently": "^6.2.0",
     "prettier": "^2.3.1",
@@ -69,7 +64,8 @@
       "preact",
       "vue",
       "web-components",
-      "html"
+      "html",
+      "svelte"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
   },
