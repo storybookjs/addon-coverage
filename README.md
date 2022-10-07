@@ -1,6 +1,6 @@
 # Storybook Addon Coverage
 
-Tools to support code coverage in Storybook and the [Storybook test runner](https://github.com/storybookjs/test-runner)
+Tools to support code coverage in Storybook and the [Storybook test runner](https://github.com/storybookjs/test-runner). It supports Storybook projects that use **Babel** or **Vite**.
  
 ### Installation
 
@@ -20,7 +20,7 @@ module.exports = {
 
 ### Configuring the addon
 
-This addon instruments your code by using [babel-plugin-istanbul](https://github.com/istanbuljs/babel-plugin-istanbul). It provides some default configuration, but if you want to add yours, you can do so by setting the options in your `.storybook/main.js`:
+This addon instruments your code by using [babel-plugin-istanbul](https://github.com/istanbuljs/babel-plugin-istanbul) if your project uses Babel or [vite-plugin-istanbul](https://github.com/iFaxity/vite-plugin-istanbul) if your project uses Vite. It provides some default configuration, but if you want to add yours, you can do so by setting the options in your `.storybook/main.js`:
 
 ```js
 module.exports = {
