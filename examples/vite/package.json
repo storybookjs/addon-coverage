@@ -1,0 +1,32 @@
+{
+  "name": "vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "storybook": "npx storybook dev -p 6006",
+    "build-storybook": "npx storybook build"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.0-alpha.34",
+    "@storybook/addon-interactions": "^7.0.0-alpha.34",
+    "@storybook/addon-coverage": "link:../..",
+    "@storybook/react": "^7.0.0-alpha.34",
+    "@storybook/react-vite": "^7.0.0-alpha.34",
+    "@storybook/test-runner": "^0.7.2",
+    "@storybook/testing-library": "^0.0.13",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.1.0",
+    "storybook": "^7.0.0-alpha.34",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0"
+  }
+}
