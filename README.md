@@ -43,7 +43,7 @@ The available options are as follows:
 | ----------- | ---------------------------------------------------------------------------------------- | --------------- | -------------------------------------------------------------------------------- |
 | `cwd`       | Set the working directory                                                                | `String`        | `process.cwd()`                                                                         |
 | `include`   | See [here](https://github.com/istanbuljs/nyc#selecting-files-for-coverage) for more info | `Array<String>` | `['**']`                                                                         |
-| `exclude`   | See [here](https://github.com/istanbuljs/nyc#selecting-files-for-coverage) for more info | `Array<String>` | [list](https://github.com/storybookjs/addon-coverage/blob/main/src/constants.js) |
+| `exclude`   | See [here](https://github.com/istanbuljs/nyc#selecting-files-for-coverage) for more info | `Array<String>` | [list](https://github.com/storybookjs/addon-coverage/blob/main/src/constants.ts) |
 | `extension` | List of extensions that nyc should attempt to handle in addition to `.js`                | `Array<String>` | `['.js', '.cjs', '.mjs', '.ts', '.tsx', '.jsx', '.vue', '.svelte]`               |
 
 ### Development scripts
