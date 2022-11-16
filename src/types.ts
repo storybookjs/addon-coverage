@@ -16,7 +16,7 @@ export interface AddonOptionsBabel {
   fileName?: string;
 }
 
-export { AddonOptionsVite };
+export type { AddonOptionsVite };
 
 export interface AddonOptions {
   istanbul: AddonOptionsBabel | AddonOptionsVite;
