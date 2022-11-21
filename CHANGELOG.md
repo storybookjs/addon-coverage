@@ -1,3 +1,16 @@
+# v0.0.6 (Mon Nov 21 2022)
+
+#### 🐛 Bug Fix
+
+- Typescript: Provide types for Babel and Vite istanbul options [#10](https://github.com/storybookjs/addon-coverage/pull/10) ([@bryanjtc](https://github.com/bryanjtc) [@yannbf](https://github.com/yannbf))
+
+#### Authors: 2
+
+- Bryan Thomas ([@bryanjtc](https://github.com/bryanjtc))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.5 (Mon Oct 10 2022)
 
 ### Release Notes
