@@ -12,6 +12,7 @@ export const viteFinal = async (
   viteConfig.plugins ||= [];
   viteConfig.plugins.push(
     istanbul({
+      forceBuildInstrument: true,
       ...options.istanbul,
       include: Array.from(options.istanbul?.include || []),
       exclude: [
