@@ -46,14 +46,18 @@ module.exports = {
 | `exclude`             | See [here](https://github.com/istanbuljs/nyc#selecting-files-for-coverage) for more info | `Array<String>`                                             | [list](https://github.com/storybookjs/addon-coverage/blob/main/src/constants.ts) |
 | `extension`           | List of extensions that nyc should attempt to handle in addition to `.js`                | `Array<String>`                                             | `['.js', '.cjs', '.mjs', '.ts', '.tsx', '.jsx', '.vue', '.svelte]`               |
 | `excludeNodeModules`  | Whether or not to exclude all node_module folders (i.e. **/node_modules/**) by default   | `boolean`                                                   | `true`                                                                           |
-| `coverageVariable`    | Variable to store coverage                                                               | `string`                                                    | `__coverage__`                                                                   |
-| `coverageGlobalScope` | Scope to store the coverage variable                                                     | `string`                                                    | `this`                                                                           |
 | `ignoreClassMethods`  | Class method names to ignore for coverage`                                               | `Array<String>`                                             | `[]`                                                                             |
 | `useInlineSourceMaps` | Variable to pass sourcemap explicitly                                                    | `object`                                                    | `-`                                                                              |
 | `inputSourceMap`      | Scope to store the coverage variable                                                     | `string`                                                    | `-`                                                                              |
 | `nycrcPath`           | Path to nyc config file                                                                  | `string`                                                    | `-`                                                                              |
 | `onCover`             | Hook used to track coverage for all files                                                | `(fileName: string, fileCoverage: FileCoverage) => unknown` | `-`                                                                              |
 | `fileName`            | File name to use in onCover hook                                                         | `string`                                                    | `-`                                                                              |
+
+> **Note:** 
+> If you're using typescript, you can import the type for the options like so:
+> ```ts
+> import type { AddonOptionsBabel } from '@storybook/addon-coverage'
+> ```
 
 **The available options if your project uses Vite are as follows:**
 
@@ -68,6 +72,12 @@ module.exports = {
 | `checkProd `            | Optional boolean to enforce the plugin to skip instrumentation for production environments. Looks at Vite's isProduction key from the ResolvedConfig.                                                                                                                                                       | `boolean`                   | `-`                                                                              |
 | `forceBuildInstrument ` | Optional boolean to enforce the plugin to add instrumentation in build mode.                                                                                                                                                                                                                                | `boolean`                   | `false`                                                                          |
 | `nycrcPath `            | Path to specific nyc config to use instead of automatically searching for a nycconfig. This parameter is just passed down to @istanbuljs/load-nyc-config.                                                                                                                                                   | `string`                    | `-`                                                                              |
+
+> **Note:** 
+> If you're using typescript, you can import the type for the options like so:
+> ```ts
+> import type { AddonOptionsVite } from '@storybook/addon-coverage'
+> ```
 
 ### Development scripts
 

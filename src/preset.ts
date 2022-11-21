@@ -1,14 +1,14 @@
 import type { TransformOptions } from "@babel/core";
 import type { Options } from "@storybook/core-common";
 import { defaultExclude, defaultExtensions } from "./constants";
-import type { AddonOptions } from "./types";
+import type { AddonOptionsBabel, AddonOptionsVite } from "./types";
 
 export const viteFinal = async (
   viteConfig: Record<string, any>,
-  options: Options & AddonOptions
+  options: Options & AddonOptionsVite
 ) => {
   const istanbul = require("vite-plugin-istanbul");
-  console.log("Adding istanbul plugin to vite config");
+  console.log("[addon-coverage] Adding istanbul plugin to vite config");
   viteConfig.plugins ||= [];
   viteConfig.plugins.push(
     istanbul({
@@ -28,9 +28,9 @@ export const viteFinal = async (
 
 export const babel = async (
   babelConfig: TransformOptions,
-  options: Options & AddonOptions
+  options: Options & AddonOptionsBabel
 ) => {
-  console.log("Adding istanbul plugin to babel config");
+  console.log("[addon-coverage] Adding istanbul plugin to babel config");
   babelConfig.plugins ||= [];
   babelConfig.plugins.push([
     "istanbul",
@@ -43,6 +43,7 @@ export const babel = async (
         ...Array.from(options.istanbul?.exclude || []),
       ],
       extension: options.istanbul?.extension || defaultExtensions,
+      coverageVariable: "__coverage__",
     },
   ]);
 

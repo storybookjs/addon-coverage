@@ -1,13 +1,12 @@
-import type { IstanbulPluginOptions as AddonOptionsVite } from "vite-plugin-istanbul";
+import type { IstanbulPluginOptions as IstanbulOptionsVite } from "vite-plugin-istanbul";
 import type { FileCoverage } from "istanbul-lib-coverage";
-export interface AddonOptionsBabel {
+
+interface IstanbulOptionsBabel {
   cwd?: string;
   include?: string[];
   exclude?: string[];
   extension?: string[];
   excludeNodeModules?: boolean;
-  coverageVariable?: string;
-  coverageGlobalScopeFunc?: boolean;
   ignoreClassMethods?: string[];
   useInlineSourceMaps?: boolean;
   inputSourceMap?: object;
@@ -16,8 +15,10 @@ export interface AddonOptionsBabel {
   fileName?: string;
 }
 
-export type { AddonOptionsVite };
+export interface AddonOptionsBabel {
+  istanbul: IstanbulOptionsBabel;
+}
 
-export interface AddonOptions {
-  istanbul: AddonOptionsBabel | AddonOptionsVite;
+export interface AddonOptionsVite {
+  istanbul: IstanbulOptionsVite;
 }
