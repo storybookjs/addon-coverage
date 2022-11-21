@@ -16,9 +16,9 @@ interface IstanbulOptionsBabel {
 }
 
 export interface AddonOptionsBabel {
-  istanbul: IstanbulOptionsBabel;
+  istanbul?: IstanbulOptionsBabel;
 }
 
 export interface AddonOptionsVite {
-  istanbul: IstanbulOptionsVite;
+  istanbul?: IstanbulOptionsVite;
 }
