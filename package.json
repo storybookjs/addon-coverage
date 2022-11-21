@@ -72,6 +72,7 @@
   },
   "dependencies": {
     "@types/babel__core": "^7.1.19",
+    "@types/istanbul-lib-coverage": "^2.0.4",
     "babel-plugin-istanbul": "^6.1.1",
     "vite-plugin-istanbul": "^3.0.1"
   }

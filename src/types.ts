@@ -1,10 +1,24 @@
-export interface IstanbulOptions {
-  cwd: string;
-  include: string[];
-  exclude: string[];
-  extension: string[];
+import type { IstanbulPluginOptions as IstanbulOptionsVite } from "vite-plugin-istanbul";
+import type { FileCoverage } from "istanbul-lib-coverage";
+
+interface IstanbulOptionsBabel {
+  cwd?: string;
+  include?: string[];
+  exclude?: string[];
+  extension?: string[];
+  excludeNodeModules?: boolean;
+  ignoreClassMethods?: string[];
+  useInlineSourceMaps?: boolean;
+  inputSourceMap?: object;
+  nycrcPath?: string;
+  onCover?: (fileName: string, fileCoverage: FileCoverage) => unknown;
+  fileName?: string;
 }
 
-export interface AddonOptions {
-  istanbul: IstanbulOptions;
+export interface AddonOptionsBabel {
+  istanbul?: IstanbulOptionsBabel;
+}
+
+export interface AddonOptionsVite {
+  istanbul?: IstanbulOptionsVite;
 }
