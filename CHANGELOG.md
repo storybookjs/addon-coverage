@@ -1,3 +1,15 @@
+# v0.0.7 (Mon Nov 21 2022)
+
+#### 🐛 Bug Fix
+
+- Vite: generate code coverage in prod mode [#12](https://github.com/storybookjs/addon-coverage/pull/12) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.6 (Mon Nov 21 2022)
 
 #### 🐛 Bug Fix
