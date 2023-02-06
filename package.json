@@ -1,6 +1,6 @@
 {
   "name": "@storybook/addon-coverage",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Tools to support code coverage in Storybook",
   "keywords": [
     "storybook-addons",
