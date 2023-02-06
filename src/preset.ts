@@ -8,11 +8,15 @@ export const viteFinal = async (
   options: Options & AddonOptionsVite
 ) => {
   const istanbul = require("vite-plugin-istanbul");
+
   console.log("[addon-coverage] Adding istanbul plugin to vite config");
+  viteConfig.build = viteConfig.build || {};
+  viteConfig.build.sourcemap = true;
+
   viteConfig.plugins ||= [];
   viteConfig.plugins.push(
     istanbul({
-      forceBuildInstrument: true,
+      forceBuildInstrument: options.configType === "PRODUCTION",
       ...options.istanbul,
       include: Array.from(options.istanbul?.include || []),
       exclude: [
