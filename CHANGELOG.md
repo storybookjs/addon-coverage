@@ -1,3 +1,15 @@
+# v0.0.8 (Mon Feb 06 2023)
+
+#### 🐛 Bug Fix
+
+- Set `forceBuildInstrument` only in production builds [#16](https://github.com/storybookjs/addon-coverage/pull/16) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.7 (Mon Nov 21 2022)
 
 #### 🐛 Bug Fix
