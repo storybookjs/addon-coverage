@@ -26,13 +26,13 @@
     "webpack-dev-server": "latest"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.0-alpha.34",
-    "@storybook/addon-interactions": "^7.0.0-alpha.34",
+    "@storybook/addon-essentials": "^7.4.2",
+    "@storybook/addon-interactions": "^7.4.2",
     "@storybook/addon-coverage": "link:../..",
-    "@storybook/test-runner": "^0.7.2",
-    "@storybook/react": "^7.0.0-alpha.34",
-    "@storybook/react-webpack5": "^7.0.0-alpha.34",
-    "@storybook/testing-library": "^0.0.13",
-    "storybook": "^7.0.0-alpha.34"
+    "@storybook/test-runner": "^0.13.0",
+    "@storybook/react": "^7.4.2",
+    "@storybook/react-webpack5": "^7.4.2",
+    "@storybook/testing-library": "^0.2.1",
+    "storybook": "^7.4.2"
   }
 }

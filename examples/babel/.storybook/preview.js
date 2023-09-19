@@ -1,4 +1,7 @@
-console.log(globalThis.__coverage__)
+export const decorators = [(StoryFn) => {
+  console.log(globalThis.__coverage__)
+  return StoryFn()
+}]
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
