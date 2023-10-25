@@ -71,9 +71,11 @@
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
   },
   "dependencies": {
+    "@jsdevtools/coverage-istanbul-loader": "^3.0.5",
     "@types/babel__core": "^7.1.19",
     "@types/istanbul-lib-coverage": "^2.0.4",
     "babel-plugin-istanbul": "^6.1.1",
+    "swc-plugin-coverage-instrument": "^0.0.20",
     "vite-plugin-istanbul": "^3.0.1"
   }
 }

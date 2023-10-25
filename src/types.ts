@@ -15,6 +15,27 @@ interface IstanbulOptionsBabel {
   fileName?: string;
 }
 
+interface IstanbulOptionsSWC {
+  coverageVariable?: string;
+  compact?: boolean;
+  reportLogic?: boolean;
+  ignoreClassMethods?: Array<string>;
+  inputSourceMap?: Record<string, any>;
+  instrumentLog: {
+    level: "trace" | "warn" | "error" | "info";
+    enableTrace: boolean;
+  };
+}
+
+interface IstanbulOptionsWebpack {
+  coverageVariable?: string;
+  preserveComments?: boolean;
+  compact?: boolean;
+  produceSourceMap?: boolean;
+  ignoreClassMethods: [];
+  debug?: boolean;
+}
+
 export interface AddonOptionsBabel {
   istanbul?: IstanbulOptionsBabel;
 }
@@ -22,3 +43,23 @@ export interface AddonOptionsBabel {
 export interface AddonOptionsVite {
   istanbul?: IstanbulOptionsVite;
 }
+
+export type AddonOptionsWebpack = {
+  useWebpackConfig?: boolean;
+  useSwcConfig?: boolean;
+  useSwcPlugin: true;
+  istanbul?: {
+    include?: string[];
+    exclude?: string[];
+    extension?: RegExp;
+  } & IstanbulOptionsSWC;
+} | {
+  useWebpackConfig?: boolean;
+  useSwcConfig?: boolean;
+  useSwcPlugin: false;
+  istanbul?: {
+    include?: string[];
+    exclude?: string[];
+    extension?: RegExp;
+  } & IstanbulOptionsWebpack;
+};
