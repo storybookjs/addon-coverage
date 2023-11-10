@@ -1,15 +1,8 @@
-import type { TransformOptions } from "@babel/core";
 import type { Options } from "@storybook/core-common";
-import {
-  defaultExclude,
-  defaultExcludeRegexes,
-  defaultExtensions,
-} from "./constants";
-import type {
-  AddonOptionsBabel,
-  AddonOptionsVite,
-  AddonOptionsWebpack,
-} from "./types";
+import { defaultExclude, defaultExtensions } from "./constants";
+import type { AddonOptionsVite, AddonOptionsWebpack } from "./types";
+import { createTestExclude } from "./webpack5-exclude";
+import { getNycConfig } from "./nyc-config";
 
 export const viteFinal = async (
   viteConfig: Record<string, any>,
@@ -39,72 +32,25 @@ export const viteFinal = async (
   return viteConfig;
 };
 
-export const babel = async (
-  babelConfig: TransformOptions,
-  options: Options & AddonOptionsBabel
-) => {
-  console.log("[addon-coverage] Adding istanbul plugin to Babel config");
-  babelConfig.plugins ||= [];
-  babelConfig.plugins.push([
-    "istanbul",
-    {
-      ...options.istanbul,
-      include: Array.from(options.istanbul?.include || []),
-      exclude: [
-        options.configDir + "/**",
-        ...defaultExclude,
-        ...Array.from(options.istanbul?.exclude || []),
-      ],
-      extension: options.istanbul?.extension || defaultExtensions,
-      coverageVariable: "__coverage__",
-    },
-  ]);
-
-  return babelConfig;
-};
-
-export const swc = async (
-  swcConfig: Record<string, any>,
-) => {
-  swcConfig.parseMap = true;
-
-  return swcConfig;
-};
-
 export const webpackFinal = async (
   webpackConfig: Record<string, any>,
   options: Options & AddonOptionsWebpack
 ) => {
   webpackConfig.module.rules ||= [];
-  const extensions = options.istanbul?.extension || /\.(mjs|cjs|tsx?|jsx?)$/;
+  const nycConfig = await getNycConfig(options.istanbul);
+  const extensions =
+    options.istanbul?.extension ?? nycConfig.extension ?? defaultExtensions;
 
   console.log("[addon-coverage] Adding istanbul loader to Webpack config");
 
+  const testExclude = await createTestExclude(options.istanbul);
+
   webpackConfig.module.rules.push({
-    test: extensions,
-    loader: "@jsdevtools/coverage-istanbul-loader",
+    test: new RegExp(extensions?.join("|").replace(/\./g, "\\.")),
+    loader: require.resolve("./loader/webpack5-istanbul-loader"),
     enforce: "post",
     options: options.istanbul || {},
-    include: (modulePath: string) => {
-      if (options.istanbul?.include) {
-        const includeRegexes = options.istanbul.include.map(
-          (pattern) => new RegExp(pattern)
-        );
-        return includeRegexes.some((pattern) => pattern.test(modulePath));
-      } else {
-        return true;
-      }
-    },
-    exclude: (modulePath: string) => {
-      const excludeRegexes = defaultExcludeRegexes;
-      if (options.istanbul?.exclude) {
-        excludeRegexes.push(
-          ...options.istanbul.exclude.map((pattern) => new RegExp(pattern))
-        );
-      }
-
-      return excludeRegexes.some((pattern) => pattern.test(modulePath));
-    },
+    include: (modulePath: string) => testExclude.shouldInstrument(modulePath),
   });
 
   return webpackConfig;
