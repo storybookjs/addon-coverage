@@ -79,9 +79,9 @@
     "@jsdevtools/coverage-istanbul-loader": "^3.0.5",
     "@types/istanbul-lib-coverage": "^2.0.4",
     "convert-source-map": "^2.0.0",
+    "espree": "^9.6.1",
     "istanbul-lib-instrument": "^6.0.1",
-    "loader-utils": "^3.2.1",
-    "merge-source-map": "^1.1.0",
+    "source-map": "^0.7.4",
     "test-exclude": "^6.0.0",
     "vite-plugin-istanbul": "^3.0.1"
   }

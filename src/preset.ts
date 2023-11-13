@@ -3,6 +3,10 @@ import { defaultExclude, defaultExtensions } from "./constants";
 import type { AddonOptionsVite, AddonOptionsWebpack } from "./types";
 import { createTestExclude } from "./webpack5-exclude";
 import { getNycConfig } from "./nyc-config";
+import {
+  InstrumenterOptions,
+  createInstrumenter,
+} from "istanbul-lib-instrument";
 
 export const viteFinal = async (
   viteConfig: Record<string, any>,
@@ -32,6 +36,14 @@ export const viteFinal = async (
   return viteConfig;
 };
 
+const defaultOptions: Partial<InstrumenterOptions> = {
+  preserveComments: true,
+  produceSourceMap: true,
+  autoWrap: true,
+  esModules: true,
+  compact: false,
+};
+
 export const webpackFinal = async (
   webpackConfig: Record<string, any>,
   options: Options & AddonOptionsWebpack
@@ -45,11 +57,17 @@ export const webpackFinal = async (
 
   const testExclude = await createTestExclude(options.istanbul);
 
-  webpackConfig.module.rules.push({
+  let instrumenterOptions = Object.assign(defaultOptions, options.istanbul);
+  let instrumenter = createInstrumenter(instrumenterOptions);
+
+  webpackConfig.module.rules.unshift({
     test: new RegExp(extensions?.join("|").replace(/\./g, "\\.")),
     loader: require.resolve("./loader/webpack5-istanbul-loader"),
     enforce: "post",
-    options: options.istanbul || {},
+    options: {
+      ...(options.istanbul ?? {}),
+      instrumenter,
+    },
     include: (modulePath: string) => testExclude.shouldInstrument(modulePath),
   });
 
