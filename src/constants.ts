@@ -13,6 +13,7 @@ const testFileExtensions = defaultExtensions
   .join(",");
 
 export const defaultExclude = [
+  "**/node_modules/**",
   ".storybook/**",
   "coverage/**",
   "packages/*/test{,s}/**",

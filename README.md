@@ -1,6 +1,6 @@
 # Storybook Addon Coverage
 
-Tools to support code coverage in Storybook and the [Storybook test runner](https://github.com/storybookjs/test-runner). It supports Storybook projects that use **Babel** or **Vite**.
+Tools to support code coverage in Storybook and the [Storybook test runner](https://github.com/storybookjs/test-runner). It supports Storybook projects that use **Webpack5** or **Vite**.
 
 ### Installation
 
@@ -13,17 +13,17 @@ yarn add -D @storybook/addon-coverage
 And by registering it in your `.storybook/main.js`:
 
 ```js
-module.exports = {
+export default {
   addons: ["@storybook/addon-coverage"],
 };
 ```
 
 ### Configuring the addon
 
-This addon instruments your code by using [babel-plugin-istanbul](https://github.com/istanbuljs/babel-plugin-istanbul) if your project uses Babel or [vite-plugin-istanbul](https://github.com/iFaxity/vite-plugin-istanbul) if your project uses Vite. It provides some default configuration, but if you want to add yours, you can do so by setting the options in your `.storybook/main.js`:
+This addon instruments your code by using a custom wrapper around [istanbul-lib-instrument](https://www.npmjs.com/package/istanbul-lib-instrument) if your project uses Webpack5 or [vite-plugin-istanbul](https://github.com/iFaxity/vite-plugin-istanbul) if your project uses Vite. It provides some default configuration, but if you want to add yours, you can do so by setting the options in your `.storybook/main.js`:
 
 ```js
-module.exports = {
+export default {
   addons: [
     {
       name: "@storybook/addon-coverage",
@@ -37,26 +37,29 @@ module.exports = {
 };
 ```
 
-**The available options if your project uses Babel are as follows:**
+**The available options if your project uses Webpack5 are as follows:**
 
-| Option name           | Description                                                                              | Type                                                        | Default                                                                          |
-| --------------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `cwd`                 | Set the working directory                                                                | `String`                                                    | `process.cwd()`                                                                  |
-| `include`             | See [here](https://github.com/istanbuljs/nyc#selecting-files-for-coverage) for more info | `Array<String>`                                             | `['**']`                                                                         |
-| `exclude`             | See [here](https://github.com/istanbuljs/nyc#selecting-files-for-coverage) for more info | `Array<String>`                                             | [list](https://github.com/storybookjs/addon-coverage/blob/main/src/constants.ts) |
-| `extension`           | List of extensions that nyc should attempt to handle in addition to `.js`                | `Array<String>`                                             | `['.js', '.cjs', '.mjs', '.ts', '.tsx', '.jsx', '.vue', '.svelte]`               |
-| `excludeNodeModules`  | Whether or not to exclude all node_module folders (i.e. **/node_modules/**) by default   | `boolean`                                                   | `true`                                                                           |
-| `ignoreClassMethods`  | Class method names to ignore for coverage`                                               | `Array<String>`                                             | `[]`                                                                             |
-| `useInlineSourceMaps` | Variable to pass sourcemap explicitly                                                    | `object`                                                    | `-`                                                                              |
-| `inputSourceMap`      | Scope to store the coverage variable                                                     | `string`                                                    | `-`                                                                              |
-| `nycrcPath`           | Path to nyc config file                                                                  | `string`                                                    | `-`                                                                              |
-| `onCover`             | Hook used to track coverage for all files                                                | `(fileName: string, fileCoverage: FileCoverage) => unknown` | `-`                                                                              |
-| `fileName`            | File name to use in onCover hook                                                         | `string`                                                    | `-`                                                                              |
+| Option name            | Description                                                                                                    | Type            | Default                                                                                      |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------- | --------------- | -------------------------------------------------------------------------------------------- |
+| `cwd`                  | Set the working directory                                                                                      | `String`        | `process.cwd()`                                                                              |
+| `nycrcPath`            | Path to specific nyc config to use instead of automatically searching for a nycconfig.                         | `string`        | -                                                                                            |
+| `include`              | Glob pattern to include files. It has precedence over the include definition from your nyc config              | `Array<String>` | -                                                                                            |
+| `exclude`              | Glob pattern to exclude files. It has precedence over the exclude definition from your nyc config              | `Array<String>` | `defaultExclude` in https://github.com/storybookjs/addon-coverage/blob/main/src/constants.ts |
+| `extension`            | List of supported extensions. It has precedence over the extension definition from your nyc config             | `Array<String>` | `['.js', '.cjs', '.mjs', '.ts', '.tsx', '.jsx', '.vue', '.svelte]`                           |
+| `coverageVariable`     | The global variable name that Istanbul will use to store coverage results.                                     | `string`        | -                                                                                            |
+| `preserveComments`     | Indicates whether comments in the code should be preserved during the instrumentation process.                 | `boolean`       | `true`                                                                                       |
+| `compact`              | Controls whether the output of instrumented code is compacted. Useful for debugging when set to `false`.       | `boolean`       | `false`                                                                                      |
+| `esModules`            | Determines whether the code to be instrumented uses ES Module syntax.                                          | `boolean`       | `true`                                                                                       |
+| `autoWrap`             | When set to `true`, wraps program code in a function to enable top-level return statements.                    | `boolean`       | `true`                                                                                       |
+| `produceSourceMap`     | If `true`, instructs Istanbul to produce a source map for the instrumented code.                               | `boolean`       | `true`                                                                                       |
+| `sourceMapUrlCallback` | A callback function that gets invoked with the filename and the source map URL when a source map is generated. | `function`      | -                                                                                            |
+| `debug`                | Enables the debug mode, providing additional logging information during the instrumentation process.           | `boolean`       | -                                                                                            |
 
-> **Note:** 
+> **Note:**
 > If you're using typescript, you can import the type for the options like so:
+>
 > ```ts
-> import type { AddonOptionsBabel } from '@storybook/addon-coverage'
+> import type { AddonOptionsWebpack } from "@storybook/addon-coverage";
 > ```
 
 **The available options if your project uses Vite are as follows:**
@@ -67,16 +70,17 @@ module.exports = {
 | `include`               | See [here](https://github.com/istanbuljs/nyc#selecting-files-for-coverage) for more info                                                                                                                                                                                                                    | `Array<String>` or `string` | `['**']`                                                                         |
 | `exclude`               | See [here](https://github.com/istanbuljs/nyc#selecting-files-for-coverage) for more info                                                                                                                                                                                                                    | `Array<String>` or `string` | [list](https://github.com/storybookjs/addon-coverage/blob/main/src/constants.ts) |
 | `extension`             | List of extensions that nyc should attempt to handle in addition to `.js`                                                                                                                                                                                                                                   | `Array<String>` or `string` | `['.js', '.cjs', '.mjs', '.ts', '.tsx', '.jsx', '.vue', '.svelte]`               |
-| `requireEnv `           | Optional boolean to require the environment variable (defaults to VITE_COVERAGE) to equal true in order to instrument the code. Otherwise it will instrument even if env variable is not set. However if requireEnv is not set the instrumentation will stop if the environment variable is equal to false. | `boolean`                         | `-`                                                                           |
+| `requireEnv `           | Optional boolean to require the environment variable (defaults to VITE_COVERAGE) to equal true in order to instrument the code. Otherwise it will instrument even if env variable is not set. However if requireEnv is not set the instrumentation will stop if the environment variable is equal to false. | `boolean`                   | `-`                                                                              |
 | `cypress `              | Optional boolean to change the environment variable to CYPRESS_COVERAGE instead of VITE_COVERAGE. For ease of use with `@cypress/code-coverage` coverage                                                                                                                                                    | `boolean`                   | `-`                                                                              |
 | `checkProd `            | Optional boolean to enforce the plugin to skip instrumentation for production environments. Looks at Vite's isProduction key from the ResolvedConfig.                                                                                                                                                       | `boolean`                   | `-`                                                                              |
 | `forceBuildInstrument ` | Optional boolean to enforce the plugin to add instrumentation in build mode.                                                                                                                                                                                                                                | `boolean`                   | `false`                                                                          |
 | `nycrcPath `            | Path to specific nyc config to use instead of automatically searching for a nycconfig. This parameter is just passed down to @istanbuljs/load-nyc-config.                                                                                                                                                   | `string`                    | `-`                                                                              |
 
-> **Note:** 
+> **Note:**
 > If you're using typescript, you can import the type for the options like so:
+>
 > ```ts
-> import type { AddonOptionsVite } from '@storybook/addon-coverage'
+> import type { AddonOptionsVite } from "@storybook/addon-coverage";
 > ```
 
 ### Development scripts

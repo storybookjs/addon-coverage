@@ -22,3 +22,13 @@ export interface AddonOptionsBabel {
 export interface AddonOptionsVite {
   istanbul?: IstanbulOptionsVite;
 }
+
+export type AddonOptionsWebpack = {
+  istanbul?: {
+    cwd?: string;
+    nycrcPath?: string;
+    include?: string[];
+    exclude?: string[];
+    extension?: string[];
+  };
+};

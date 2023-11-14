@@ -10,6 +10,9 @@
     "storybook": "npx storybook dev -p 6006",
     "build-storybook": "npx storybook build"
   },
+  "resolutions": {
+    "jackspeak": "2.1.1"
+  },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
