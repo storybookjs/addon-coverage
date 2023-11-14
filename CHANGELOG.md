@@ -1,3 +1,29 @@
+# v1.0.0 (Tue Nov 14 2023)
+
+### Release Notes
+
+#### [Breaking Change]: Replace babel-istanbul-plugin and replace it by a webpack loader ([#27](https://github.com/storybookjs/addon-coverage/pull/27))
+
+- [BREAKING CHANGE]: Dropping Storybook < 7 support
+- Replaced `babel-istanbul-plugin` with a custom Webpack loader to support coverage independently of the compiler used for Webpack5 projects. Before, the coverage addon only worked if Babel was used with Webpack5. Now, users might use other compilers like, for example, SWC.
+
+---
+
+#### 💥 Breaking Change
+
+- [Breaking Change]: Replace babel-istanbul-plugin and replace it by a webpack loader [#27](https://github.com/storybookjs/addon-coverage/pull/27) ([@yannbf](https://github.com/yannbf) [@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### 🐛 Bug Fix
+
+- Migrate examples to Storybook 7 [#20](https://github.com/storybookjs/addon-coverage/pull/20) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 2
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.9 (Thu Jul 20 2023)
 
 #### ⚠️ Pushed to `main`
