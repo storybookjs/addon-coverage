@@ -56,7 +56,7 @@ export default {
 | `debug`                | Enables the debug mode, providing additional logging information during the instrumentation process.           | `boolean`       | -                                                                                            |
 
 > **Note:**
-> If you're using typescript, you can import the type for the options like so:
+> If you're using TypeScript, you can import the type for the options like so:
 >
 > ```ts
 > import type { AddonOptionsWebpack } from "@storybook/addon-coverage";
@@ -77,11 +77,36 @@ export default {
 | `nycrcPath `            | Path to specific nyc config to use instead of automatically searching for a nycconfig. This parameter is just passed down to @istanbuljs/load-nyc-config.                                                                                                                                                   | `string`                    | `-`                                                                              |
 
 > **Note:**
-> If you're using typescript, you can import the type for the options like so:
+> If you're using TypeScript, you can import the type for the options like so:
 >
 > ```ts
 > import type { AddonOptionsVite } from "@storybook/addon-coverage";
 > ```
+
+
+## Troubleshooting
+
+### The coverage addon doesn't support optimized builds
+
+The `--test` flag is designed to be as fast as possible, removing addons known to slow down the build and are not needed for functional testing. One of these addons is `@storybook/addon-coverage`, which is used in conjunction with the Storybook Test runner to collect coverage information for your stories.
+
+If you are using `addon-coverage` **AND** running the test runner against your _built_ Storybook, the `--test` flag will strip out the coverage information. To configure the `--test` build to keep coverage information (at the expense of a slightly slower build), update your Storybook configuration file (i.e.,`.storybook/main.js|ts`) and include the [`disabledAddons`](https://storybook.js.org/docs/api/main-config-build#testdisabledaddons) option.
+
+```js
+// main.js
+
+export default {
+  // Your Storybook configuration goes here
+  build: {
+    test: {
+      disabledAddons: [
+        '@storybook/addon-docs',
+        '@storybook/addon-essentials/docs',
+      ],
+    },
+  },
+}
+```
 
 ### Development scripts
 
