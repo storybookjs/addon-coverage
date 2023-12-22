@@ -96,12 +96,7 @@ If you are using `addon-coverage` **AND** running the test runner against your _
 // main.js
 
 export default {
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-coverage',
-  ],
+  // Your Storybook configuration goes here
   build: {
     test: {
       disabledAddons: [
