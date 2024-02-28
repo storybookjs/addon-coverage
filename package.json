@@ -48,7 +48,7 @@
     "@types/convert-source-map": "^2.0.3",
     "@types/istanbul-lib-instrument": "^1.7.7",
     "@types/test-exclude": "^6.0.2",
-    "auto": "^10.3.0",
+    "auto": "^11.1.1",
     "concurrently": "^6.2.0",
     "prettier": "^2.3.1",
     "prop-types": "^15.7.2",
