@@ -1,3 +1,20 @@
+# v1.0.1 (Wed Feb 28 2024)
+
+#### 🐛 Bug Fix
+
+- Fix: Add index entrypoint [#39](https://github.com/storybookjs/addon-coverage/pull/39) ([@yannbf](https://github.com/yannbf))
+
+#### 📝 Documentation
+
+- Docs: Adds troubleshooting for test flag [#36](https://github.com/storybookjs/addon-coverage/pull/36) ([@jonniebigodes](https://github.com/jonniebigodes))
+
+#### Authors: 2
+
+- [@jonniebigodes](https://github.com/jonniebigodes)
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v1.0.0 (Tue Nov 14 2023)
 
 ### Release Notes
