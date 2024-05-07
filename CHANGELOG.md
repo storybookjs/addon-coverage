@@ -1,3 +1,15 @@
+# v1.0.2 (Tue May 07 2024)
+
+#### 🐛 Bug Fix
+
+- Add more files to default filter [#41](https://github.com/storybookjs/addon-coverage/pull/41) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v1.0.1 (Wed Feb 28 2024)
 
 #### 🐛 Bug Fix
