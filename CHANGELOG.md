@@ -1,3 +1,15 @@
+# v1.0.3 (Tue May 07 2024)
+
+#### 🐛 Bug Fix
+
+- Fix: Handle scenario where rawSourceMap is a string [#33](https://github.com/storybookjs/addon-coverage/pull/33) ([@hkaikai](https://github.com/hkaikai))
+
+#### Authors: 1
+
+- [@hkaikai](https://github.com/hkaikai)
+
+---
+
 # v1.0.2 (Tue May 07 2024)
 
 #### 🐛 Bug Fix
