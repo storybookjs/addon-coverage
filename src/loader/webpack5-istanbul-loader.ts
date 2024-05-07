@@ -25,7 +25,8 @@ type RawSourceMap = {
   names?: string[];
 };
 
-function sanitizeSourceMap(rawSourceMap: RawSourceMap): RawSourceMap {
+function sanitizeSourceMap(rawSourceMap: RawSourceMap | string): RawSourceMap {
+  if (typeof rawSourceMap === 'string') return JSON.parse(rawSourceMap);
   const { sourcesContent, ...sourceMap } = rawSourceMap ?? {};
 
   // JSON parse/stringify trick required for istanbul to accept the SourceMap
