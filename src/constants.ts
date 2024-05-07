@@ -1,8 +1,6 @@
+const commonExtensions = [".js", ".cjs", ".mjs", ".ts", ".cts", ".mts"];
 export const defaultExtensions = [
-  ".js",
-  ".cjs",
-  ".mjs",
-  ".ts",
+  ...commonExtensions,
   ".tsx",
   ".jsx",
   ".vue",
@@ -12,21 +10,26 @@ const testFileExtensions = defaultExtensions
   .map((extension) => extension.slice(1))
   .join(",");
 
+const configFileExtensions = commonExtensions
+  .map((extension) => extension.slice(1))
+  .join(",");
+
 export const defaultExclude = [
   "**/node_modules/**",
   ".storybook/**",
   "coverage/**",
   "packages/*/test{,s}/**",
   "**/*.d.ts",
+  "**/*.mock.*",
   "test{,s}/**",
   `test{,-*}.{${testFileExtensions}}`,
-  `**/*{.,-}{spec,stories,types}.{${testFileExtensions}}`,
+  `**/*{.,-}{spec,story,stories,types}.{${testFileExtensions}}`,
   "**/__tests__/**",
   "**/*-entry.js",
 
   /* Exclude common development tool configuration files */
-  "**/{ava,babel,nyc}.config.{js,cjs,mjs}",
-  "**/jest.config.{js,cjs,mjs,ts}",
-  "**/{karma,rollup,webpack}.config.js",
-  "**/.{eslint,mocha}rc.{js,cjs}",
+  `**/{ava,babel,nyc}.config.{${configFileExtensions}}`,
+  `**/{jest,vitest}.config.{${configFileExtensions}}`,
+  `**/{karma,rollup,webpack,vite}.config.{${configFileExtensions}}`,
+  `**/.{eslint,mocha}rc.{${configFileExtensions}}`,
 ];
