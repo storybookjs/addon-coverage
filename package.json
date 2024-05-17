@@ -81,7 +81,6 @@
     "convert-source-map": "^2.0.0",
     "espree": "^9.6.1",
     "istanbul-lib-instrument": "^6.0.1",
-    "source-map": "^0.7.4",
     "test-exclude": "^6.0.0",
     "vite-plugin-istanbul": "^3.0.1"
   }
