@@ -1,3 +1,15 @@
+# v1.0.4 (Fri May 24 2024)
+
+#### 🐛 Bug Fix
+
+- Fix sourcemap generation for Webpack5 projects [#42](https://github.com/storybookjs/addon-coverage/pull/42) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v1.0.3 (Tue May 07 2024)
 
 #### 🐛 Bug Fix
