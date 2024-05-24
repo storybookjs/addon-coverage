@@ -6,7 +6,6 @@ import * as espree from "espree";
 import fs from "fs";
 import path from "path";
 import { LoaderContext } from "webpack";
-import { SourceMapGenerator, StartOfSourceMap } from "source-map";
 
 import { AddonOptionsWebpack } from "../types";
 
@@ -26,31 +25,7 @@ type RawSourceMap = {
 };
 
 function sanitizeSourceMap(rawSourceMap: RawSourceMap | string): RawSourceMap {
-  if (typeof rawSourceMap === 'string') return JSON.parse(rawSourceMap);
-  const { sourcesContent, ...sourceMap } = rawSourceMap ?? {};
-
-  // JSON parse/stringify trick required for istanbul to accept the SourceMap
-  return JSON.parse(JSON.stringify(sourceMap));
-}
-
-function createIdentitySourceMap(
-  file: string,
-  source: string,
-  option: StartOfSourceMap
-) {
-  const gen = new SourceMapGenerator(option);
-  const tokens = espree.tokenize(source, { loc: true, ecmaVersion: "latest" });
-
-  tokens.forEach((token: any) => {
-    const loc = token.loc.start;
-    gen.addMapping({
-      source: file,
-      original: loc,
-      generated: loc,
-    });
-  });
-
-  return JSON.parse(gen.toString());
+  return rawSourceMap === "string" ? JSON.parse(rawSourceMap) : rawSourceMap;
 }
 
 export default function (
@@ -58,7 +33,9 @@ export default function (
   source: string,
   sourceMap?: RawSourceMap
 ) {
-  let map = sourceMap ?? getInlineSourceMap.call(this, source);
+  let map = sourceMap
+    ? sanitizeSourceMap(sourceMap)
+    : getInlineSourceMap.call(this, source);
   const options = this.getOptions();
   const callback = this.async();
 
@@ -70,26 +47,7 @@ export default function (
   // Instrument the code
   const instrumenter = options.instrumenter;
 
-  const combinedSourceMap = sanitizeSourceMap(sourceMap);
-
-  const code = instrumenter.instrumentSync(
-    source,
-    this.resourcePath,
-    combinedSourceMap as any
-  );
-
-  const identitySourceMap = sanitizeSourceMap(
-    createIdentitySourceMap(this.resourcePath, source, {
-      file: combinedSourceMap.file,
-      sourceRoot: combinedSourceMap.sourceRoot,
-    })
-  );
-
-  instrumenter.instrumentSync(
-    source,
-    this.resourcePath,
-    identitySourceMap as any
-  );
+  const code = instrumenter.instrumentSync(source, this.resourcePath, map);
 
   const lastSourceMap = instrumenter.lastSourceMap();
 
