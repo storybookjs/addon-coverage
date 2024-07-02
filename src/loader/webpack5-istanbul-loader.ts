@@ -25,7 +25,7 @@ type RawSourceMap = {
 };
 
 function sanitizeSourceMap(rawSourceMap: RawSourceMap | string): RawSourceMap {
-  return rawSourceMap === "string" ? JSON.parse(rawSourceMap) : rawSourceMap;
+  return typeof rawSourceMap === "string" ? JSON.parse(rawSourceMap) : rawSourceMap;
 }
 
 export default function (
