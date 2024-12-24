@@ -14,6 +14,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
 
+      - name: Build coverage addon
+        run: | 
+          yarn install
+          yarn build
+
       - name: Run tests in webpack example
         run: |
           yarn install
