@@ -1,0 +1,38 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run tests in webpack example
+        run: |
+          yarn build
+          yarn test-storybook:ci-coverage
+        working-directory: examples/webpack5
+
+      - name: Run tests in vite example
+        run: |
+          yarn build
+          yarn test-storybook:ci-coverage
+        working-directory: examples/vite
+
+      - name: Generate code coverage
+        uses: codecov/codecov-action@v3
+        with:
+          verbose: true
