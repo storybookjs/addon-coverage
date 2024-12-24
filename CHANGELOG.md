@@ -1,3 +1,15 @@
+# v1.0.5 (Tue Dec 24 2024)
+
+#### 🐛 Bug Fix
+
+- fix: Handling of rawSourceMap string type in webpack5-istanbul-loader [#44](https://github.com/storybookjs/addon-coverage/pull/44) ([@mschimk1](https://github.com/mschimk1))
+
+#### Authors: 1
+
+- Michael Schimko ([@mschimk1](https://github.com/mschimk1))
+
+---
+
 # v1.0.4 (Fri May 24 2024)
 
 #### 🐛 Bug Fix
