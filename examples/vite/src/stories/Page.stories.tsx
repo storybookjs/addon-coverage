@@ -1,5 +1,5 @@
 import type { StoryFn, Meta } from "@storybook/react";
-import { within, userEvent } from "@storybook/test";
+import { within, userEvent, expect } from "@storybook/test";
 import { Page } from "./Page";
 
 export default {
@@ -22,4 +22,9 @@ LoggedIn.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const loginButton = await canvas.getByRole("button", { name: /Log in/i });
   await userEvent.click(loginButton);
+
+  const coverage = (globalThis as any).__coverage__;
+  await expect(
+    Object.keys(coverage).find((cvg) => cvg.endsWith("Page.tsx"))
+  ).toBeTruthy();
 };
