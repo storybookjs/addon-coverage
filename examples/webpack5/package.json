@@ -12,9 +12,6 @@
     "test-storybook": "test-storybook --coverage",
     "test-storybook:ci-coverage": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"yarn build-storybook --quiet && npx serve storybook-static -l 6006\" \"wait-on tcp:6006 && yarn test-storybook --coverage\""
   },
-  "resolutions": {
-    "jackspeak": "2.1.1"
-  },
   "dependencies": {
     "@babel/core": "latest",
     "@babel/preset-typescript": "latest",
@@ -31,7 +28,7 @@
     "webpack-dev-server": "latest"
   },
   "devDependencies": {
-    "@storybook/addon-coverage": "link:../..",
+    "@storybook/addon-coverage": "portal:../..",
     "@storybook/addon-essentials": "^8.4.7",
     "@storybook/addon-interactions": "^8.4.7",
     "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
