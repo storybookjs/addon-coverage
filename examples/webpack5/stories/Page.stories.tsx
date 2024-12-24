@@ -1,6 +1,6 @@
 import React from 'react';
-import type { ComponentStoryFn, ComponentMeta } from '@storybook/react';
-import { within, userEvent } from '@storybook/testing-library';
+import type { StoryFn, Meta } from '@storybook/react';
+import { within, userEvent } from '@storybook/test';
 import { Page } from './Page';
 
 export default {
@@ -10,9 +10,9 @@ export default {
     // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'fullscreen',
   },
-} as ComponentMeta<typeof Page>;
+} as Meta<typeof Page>;
 
-const Template: ComponentStoryFn<typeof Page> = (args) => <Page {...args} />;
+const Template: StoryFn<typeof Page> = (args) => <Page {...args} />;
 
 export const LoggedOut = Template.bind({});
 
