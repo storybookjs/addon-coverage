@@ -16,3 +16,5 @@ coverage
 !/**/.yarn/sdks
 !/**/.yarn/versions
 /**/.pnp.*
+
+examples/webpack5/.yarn

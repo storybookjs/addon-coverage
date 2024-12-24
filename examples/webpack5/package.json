@@ -31,7 +31,6 @@
     "webpack-dev-server": "latest"
   },
   "devDependencies": {
-    "concurrently": "^9.1.0",
     "@storybook/addon-coverage": "link:../..",
     "@storybook/addon-essentials": "^8.4.7",
     "@storybook/addon-interactions": "^8.4.7",
@@ -40,7 +39,9 @@
     "@storybook/react-webpack5": "^8.4.7",
     "@storybook/test": "^8.4.7",
     "@storybook/test-runner": "^0.21.0",
+    "concurrently": "^9.1.0",
     "storybook": "^8.4.7",
     "wait-on": "^8.0.1"
-  }
+  },
+  "packageManager": "yarn@4.5.3"
 }
