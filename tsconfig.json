@@ -9,7 +9,7 @@
     "isolatedModules": true,
     "jsx": "react",
     "lib": ["es2017", "dom"],
-    "module": "commonjs",
+    "module": "NodeNext",
     "noImplicitAny": true,
     "rootDir": "./src",
     "skipLibCheck": true,

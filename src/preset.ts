@@ -1,4 +1,4 @@
-import type { Options } from "@storybook/core-common";
+import type { Options } from "@storybook/types";
 import { defaultExclude, defaultExtensions } from "./constants";
 import type { AddonOptionsVite, AddonOptionsWebpack } from "./types";
 import { createTestExclude } from "./webpack5-exclude";
@@ -12,7 +12,9 @@ export const viteFinal = async (
   viteConfig: Record<string, any>,
   options: Options & AddonOptionsVite
 ) => {
-  const istanbul = require("vite-plugin-istanbul");
+  const viteIstanbulPlugin = (await import("vite-plugin-istanbul")).default;
+  const istanbul = (viteIstanbulPlugin ??
+    viteIstanbulPlugin.default) as typeof viteIstanbulPlugin.default;
 
   console.log("[addon-coverage] Adding istanbul plugin to Vite config");
   viteConfig.build = viteConfig.build || {};
