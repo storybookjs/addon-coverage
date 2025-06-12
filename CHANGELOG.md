@@ -1,3 +1,19 @@
+# v2.0.0 (Thu Jun 12 2025)
+
+#### 💥 Breaking Change
+
+- Update dependencies and package structure to support ESM [#51](https://github.com/storybookjs/addon-coverage/pull/51) ([@yannbf](https://github.com/yannbf))
+
+#### 🐛 Bug Fix
+
+- Update Storybook examples [#50](https://github.com/storybookjs/addon-coverage/pull/50) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v1.0.5 (Tue Dec 24 2024)
 
 #### 🐛 Bug Fix
