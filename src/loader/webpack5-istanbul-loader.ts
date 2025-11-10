@@ -1,8 +1,6 @@
 import { Instrumenter, InstrumenterOptions } from 'istanbul-lib-instrument';
 import { fromSource, fromMapFileSource } from 'convert-source-map';
 
-// @ts-expect-error no types
-import * as espree from 'espree';
 import fs from 'fs';
 import path from 'path';
 import { LoaderContext } from 'webpack';
@@ -18,17 +16,17 @@ type RawSourceMap = {
   version: number;
   sources: string[];
   mappings: string;
-  file?: string;
+  file: string;
   sourceRoot?: string;
   sourcesContent?: string[];
-  names?: string[];
+  names: string[];
 };
 
 function sanitizeSourceMap(rawSourceMap: RawSourceMap | string): RawSourceMap {
   return typeof rawSourceMap === 'string' ? JSON.parse(rawSourceMap) : rawSourceMap;
 }
 
-export default function (this: LoaderContext<Options>, source: string, sourceMap?: RawSourceMap) {
+export default function (this: LoaderContext<Options>, source: string, sourceMap?: RawSourceMap): void {
   let map = sourceMap ? sanitizeSourceMap(sourceMap) : getInlineSourceMap.call(this, source);
   const options = this.getOptions();
   const callback = this.async();
