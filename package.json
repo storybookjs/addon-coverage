@@ -7,16 +7,15 @@
     "coverage",
     "test",
     "testing",
-    "test-runner",
-    "storybook-addons"
+    "test-runner"
   ],
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/storybookjs/addon-coverage"
   },
-  "author": "Yann Braga <yannbf@gmail.com>",
   "license": "MIT",
+  "author": "Yann Braga <yannbf@gmail.com>",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/types.d.ts",
@@ -36,8 +35,18 @@
     "prebuild": "yarn clean",
     "build": "tsup",
     "format": "prettier --write .",
-    "start": "yarn build --watch",
-    "release": "yarn build && auto shipit"
+    "release": "yarn build && auto shipit",
+    "start": "yarn build --watch"
+  },
+  "dependencies": {
+    "@istanbuljs/load-nyc-config": "^1.1.0",
+    "@jsdevtools/coverage-istanbul-loader": "^3.0.5",
+    "@types/istanbul-lib-coverage": "^2.0.4",
+    "convert-source-map": "^2.0.0",
+    "espree": "^9.6.1",
+    "istanbul-lib-instrument": "^6.0.1",
+    "test-exclude": "^6.0.0",
+    "vite-plugin-istanbul": "^6.0.2"
   },
   "devDependencies": {
     "@types/convert-source-map": "^2.0.3",
@@ -55,6 +64,7 @@
     "vite": "^7.2.2",
     "webpack": "^5.97.1"
   },
+  "packageManager": "yarn@4.5.3",
   "publishConfig": {
     "access": "public"
   },
@@ -69,16 +79,5 @@
       "svelte"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
-  },
-  "dependencies": {
-    "@istanbuljs/load-nyc-config": "^1.1.0",
-    "@jsdevtools/coverage-istanbul-loader": "^3.0.5",
-    "@types/istanbul-lib-coverage": "^2.0.4",
-    "convert-source-map": "^2.0.0",
-    "espree": "^9.6.1",
-    "istanbul-lib-instrument": "^6.0.1",
-    "test-exclude": "^6.0.0",
-    "vite-plugin-istanbul": "^6.0.2"
-  },
-  "packageManager": "yarn@4.5.3"
+  }
 }
