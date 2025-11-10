@@ -1,36 +1,28 @@
-import type { Options } from "@storybook/types";
-import { defaultExclude, defaultExtensions } from "./constants";
-import type { AddonOptionsVite, AddonOptionsWebpack } from "./types";
-import { createTestExclude } from "./webpack5-exclude";
-import { getNycConfig } from "./nyc-config";
-import {
-  InstrumenterOptions,
-  createInstrumenter,
-} from "istanbul-lib-instrument";
+import { fileURLToPath } from 'node:url';
 
-export const viteFinal = async (
-  viteConfig: Record<string, any>,
-  options: Options & AddonOptionsVite
-) => {
-  const viteIstanbulPlugin = (await import("vite-plugin-istanbul")).default;
-  const istanbul = (viteIstanbulPlugin ??
-    viteIstanbulPlugin.default) as typeof viteIstanbulPlugin.default;
+import type { Options } from 'storybook/internal/types';
+import { defaultExclude, defaultExtensions } from './constants';
+import type { AddonOptionsVite, AddonOptionsWebpack } from './types';
+import { createTestExclude } from './webpack5-exclude';
+import { getNycConfig } from './nyc-config';
+import { InstrumenterOptions, createInstrumenter } from 'istanbul-lib-instrument';
 
-  console.log("[addon-coverage] Adding istanbul plugin to Vite config");
+export const viteFinal = async (viteConfig: Record<string, any>, options: Options & AddonOptionsVite) => {
+  const viteIstanbulPlugin = (await import('vite-plugin-istanbul')).default;
+  // @ts-expect-error no types
+  const istanbul = (viteIstanbulPlugin ?? viteIstanbulPlugin.default) as typeof viteIstanbulPlugin.default;
+
+  console.log('[addon-coverage] Adding istanbul plugin to Vite config');
   viteConfig.build = viteConfig.build || {};
   viteConfig.build.sourcemap = true;
 
   viteConfig.plugins ||= [];
   viteConfig.plugins.push(
     istanbul({
-      forceBuildInstrument: options.configType === "PRODUCTION",
+      forceBuildInstrument: options.configType === 'PRODUCTION',
       ...options.istanbul,
       include: Array.from(options.istanbul?.include || []),
-      exclude: [
-        options.configDir + "/**",
-        ...defaultExclude,
-        ...Array.from(options.istanbul?.exclude || []),
-      ],
+      exclude: [options.configDir + '/**', ...defaultExclude, ...Array.from(options.istanbul?.exclude || [])],
       extension: options.istanbul?.extension || defaultExtensions,
     })
   );
@@ -46,16 +38,12 @@ const defaultOptions: Partial<InstrumenterOptions> = {
   compact: false,
 };
 
-export const webpackFinal = async (
-  webpackConfig: Record<string, any>,
-  options: Options & AddonOptionsWebpack
-) => {
+export const webpackFinal = async (webpackConfig: Record<string, any>, options: Options & AddonOptionsWebpack) => {
   webpackConfig.module.rules ||= [];
   const nycConfig = await getNycConfig(options.istanbul);
-  const extensions =
-    options.istanbul?.extension ?? nycConfig.extension ?? defaultExtensions;
+  const extensions = options.istanbul?.extension ?? nycConfig.extension ?? defaultExtensions;
 
-  console.log("[addon-coverage] Adding istanbul loader to Webpack config");
+  console.log('[addon-coverage] Adding istanbul loader to Webpack config');
 
   const testExclude = await createTestExclude(options.istanbul);
 
@@ -63,9 +51,9 @@ export const webpackFinal = async (
   let instrumenter = createInstrumenter(instrumenterOptions);
 
   webpackConfig.module.rules.unshift({
-    test: new RegExp(extensions?.join("|").replace(/\./g, "\\.")),
-    loader: require.resolve("./loader/webpack5-istanbul-loader"),
-    enforce: "post",
+    test: new RegExp(extensions?.join('|').replace(/\./g, '\\.')),
+    loader: fileURLToPath(import.meta.resolve('@storybook/addon-coverage/loader/webpack5-istanbul-loader')),
+    enforce: 'post',
     options: {
       ...(options.istanbul ?? {}),
       instrumenter,

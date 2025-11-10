@@ -7,26 +7,22 @@
     "coverage",
     "test",
     "testing",
-    "test-runner",
-    "storybook-addons"
+    "test-runner"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/storybookjs/addon-coverage"
   },
-  "author": "Yann Braga <yannbf@gmail.com>",
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/types.d.ts",
+  "author": "Yann Braga <yannbf@gmail.com>",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/types.d.ts",
-      "node": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "default": "./dist/index.js"
     },
     "./preset": "./dist/preset.js",
+    "./loader/webpack5-istanbul-loader": "./dist/loader/webpack5-istanbul-loader.js",
     "./package.json": "./package.json"
   },
   "files": [
@@ -38,25 +34,37 @@
   "scripts": {
     "prebuild": "yarn clean",
     "build": "tsup",
-    "start": "yarn build --watch",
-    "release": "yarn build && auto shipit"
+    "format": "prettier --write .",
+    "release": "yarn build && auto shipit",
+    "start": "yarn build --watch"
+  },
+  "dependencies": {
+    "@istanbuljs/load-nyc-config": "^1.1.0",
+    "@jsdevtools/coverage-istanbul-loader": "^3.0.5",
+    "@types/istanbul-lib-coverage": "^2.0.4",
+    "convert-source-map": "^2.0.0",
+    "espree": "^9.6.1",
+    "istanbul-lib-instrument": "^6.0.1",
+    "test-exclude": "^6.0.0",
+    "vite-plugin-istanbul": "^6.0.2"
   },
   "devDependencies": {
-    "@storybook/types": "^8.4.0",
     "@types/convert-source-map": "^2.0.3",
     "@types/istanbul-lib-instrument": "^1.7.7",
+    "@types/node": "^22",
     "@types/test-exclude": "^6.0.2",
     "auto": "^11.1.1",
     "concurrently": "^6.2.0",
-    "prettier": "^2.3.1",
+    "prettier": "^3.6.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "storybook": "^8.4.0",
+    "storybook": "^10.0.0 || ^10.0.0-0 || ^10.2.0-0 || ^10.3.0-0",
     "tsup": "^8.3.5",
-    "typescript": "^5.7.2",
-    "vite": "^5.0.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.2",
     "webpack": "^5.97.1"
   },
+  "packageManager": "yarn@4.5.3",
   "publishConfig": {
     "access": "public"
   },
@@ -71,16 +79,5 @@
       "svelte"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
-  },
-  "dependencies": {
-    "@istanbuljs/load-nyc-config": "^1.1.0",
-    "@jsdevtools/coverage-istanbul-loader": "^3.0.5",
-    "@types/istanbul-lib-coverage": "^2.0.4",
-    "convert-source-map": "^2.0.0",
-    "espree": "^9.6.1",
-    "istanbul-lib-instrument": "^6.0.1",
-    "test-exclude": "^6.0.0",
-    "vite-plugin-istanbul": "^6.0.2"
-  },
-  "packageManager": "yarn@4.5.3"
+  }
 }

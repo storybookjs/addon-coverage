@@ -9,13 +9,12 @@
     "isolatedModules": true,
     "jsx": "react",
     "lib": ["es2017", "dom"],
-    "module": "NodeNext",
+    "moduleResolution": "bundler",
+    "module": "preserve",
     "noImplicitAny": true,
     "rootDir": "./src",
     "skipLibCheck": true,
-    "target": "es5"
+    "target": "esnext"
   },
-  "include": [
-    "src/**/*"
-  ],
+  "include": ["src/**/*"]
 }

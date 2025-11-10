@@ -1,10 +1,10 @@
-import TestExclude from "test-exclude";
-import { defaultExclude, defaultExtensions } from "./constants";
-import { AddonOptionsWebpack } from "./types";
-import { getNycConfig } from "./nyc-config";
+import TestExclude from 'test-exclude';
+import { defaultExclude, defaultExtensions } from './constants';
+import { AddonOptionsWebpack } from './types';
+import { getNycConfig } from './nyc-config';
 
 export async function createTestExclude(
-  opts: AddonOptionsWebpack["istanbul"] = {}
+  opts: AddonOptionsWebpack['istanbul'] = {}
 ): Promise<{ shouldInstrument(filename: string): boolean }> {
   const { nycrcPath, include, exclude, extension } = opts;
   const cwd = opts.cwd ?? process.cwd();

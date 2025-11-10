@@ -1,9 +1,9 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 process.env.NODE_ENV = 'development';
 const host = process.env.HOST || 'localhost';
 
-module.exports = {
+export default {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: './src/index.tsx',
@@ -16,9 +16,7 @@ module.exports = {
     host,
     port: 3000,
   },
-  plugins: [
-    new HtmlWebpackPlugin(),
-  ],
+  plugins: [new HtmlWebpackPlugin()],
   module: {
     rules: [
       {
@@ -34,4 +32,4 @@ module.exports = {
     extensions: ['.mjs', '.js', '.cjs', '.jsx', '.tsx', '.ts'],
     modules: ['node_modules'],
   },
-}
+};

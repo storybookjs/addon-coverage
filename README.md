@@ -2,6 +2,21 @@
 
 Tools to support code coverage in Storybook and the [Storybook test runner](https://github.com/storybookjs/test-runner). It supports Storybook projects that use **Webpack5** or **Vite**.
 
+> [!WARNING]
+> If you're using Storybook in a Vite-based project, you might want to use [Storybook's Vitest integration](https://storybook.js.org/docs/writing-tests/integrations/vitest-addon?ref=test-runner-migration) instead. It's faster, provides code coverage out of the box (so you don't need this addon anymore), and integrates well with all Storybook's latest features.
+
+## Requirements
+
+- Storybook@>=10.0.0
+
+### Version compatibility
+
+| Addon coverage version | Storybook version |
+| ---------------------- | ----------------- |
+| ^3.0.0                 | ^10.0.0           |
+| ^2.0.0                 | ^9.0.0            |
+| ^2.0.0                 | ^8.0.0            |
+
 ### Installation
 
 Install this addon by adding the `@storybook/addon-coverage` dependency:
@@ -14,7 +29,7 @@ And by registering it in your `.storybook/main.js`:
 
 ```js
 export default {
-  addons: ["@storybook/addon-coverage"],
+  addons: ['@storybook/addon-coverage'],
 };
 ```
 
@@ -26,10 +41,10 @@ This addon instruments your code by using a custom wrapper around [istanbul-lib-
 export default {
   addons: [
     {
-      name: "@storybook/addon-coverage",
+      name: '@storybook/addon-coverage',
       options: {
         istanbul: {
-          include: ["**/stories/**"],
+          include: ['**/stories/**'],
         },
       },
     },
@@ -59,7 +74,7 @@ export default {
 > If you're using TypeScript, you can import the type for the options like so:
 >
 > ```ts
-> import type { AddonOptionsWebpack } from "@storybook/addon-coverage";
+> import type { AddonOptionsWebpack } from '@storybook/addon-coverage';
 > ```
 
 **The available options if your project uses Vite are as follows:**
@@ -80,9 +95,8 @@ export default {
 > If you're using TypeScript, you can import the type for the options like so:
 >
 > ```ts
-> import type { AddonOptionsVite } from "@storybook/addon-coverage";
+> import type { AddonOptionsVite } from '@storybook/addon-coverage';
 > ```
-
 
 ## Troubleshooting
 
@@ -99,13 +113,10 @@ export default {
   // Your Storybook configuration goes here
   build: {
     test: {
-      disabledAddons: [
-        '@storybook/addon-docs',
-        '@storybook/addon-essentials/docs',
-      ],
+      disabledAddons: ['@storybook/addon-docs', '@storybook/addon-essentials/docs'],
     },
   },
-}
+};
 ```
 
 ### Development scripts

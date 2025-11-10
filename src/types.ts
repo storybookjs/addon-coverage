@@ -1,5 +1,5 @@
-import type { IstanbulPluginOptions as IstanbulOptionsVite } from "vite-plugin-istanbul";
-import type { FileCoverage } from "istanbul-lib-coverage";
+import type { IstanbulPluginOptions as IstanbulOptionsVite } from 'vite-plugin-istanbul';
+import type { FileCoverage } from 'istanbul-lib-coverage';
 
 interface IstanbulOptionsBabel {
   cwd?: string;
