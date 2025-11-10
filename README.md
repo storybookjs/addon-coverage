@@ -14,7 +14,7 @@ And by registering it in your `.storybook/main.js`:
 
 ```js
 export default {
-  addons: ["@storybook/addon-coverage"],
+  addons: ['@storybook/addon-coverage'],
 };
 ```
 
@@ -26,10 +26,10 @@ This addon instruments your code by using a custom wrapper around [istanbul-lib-
 export default {
   addons: [
     {
-      name: "@storybook/addon-coverage",
+      name: '@storybook/addon-coverage',
       options: {
         istanbul: {
-          include: ["**/stories/**"],
+          include: ['**/stories/**'],
         },
       },
     },
@@ -59,7 +59,7 @@ export default {
 > If you're using TypeScript, you can import the type for the options like so:
 >
 > ```ts
-> import type { AddonOptionsWebpack } from "@storybook/addon-coverage";
+> import type { AddonOptionsWebpack } from '@storybook/addon-coverage';
 > ```
 
 **The available options if your project uses Vite are as follows:**
@@ -80,9 +80,8 @@ export default {
 > If you're using TypeScript, you can import the type for the options like so:
 >
 > ```ts
-> import type { AddonOptionsVite } from "@storybook/addon-coverage";
+> import type { AddonOptionsVite } from '@storybook/addon-coverage';
 > ```
-
 
 ## Troubleshooting
 
@@ -99,13 +98,10 @@ export default {
   // Your Storybook configuration goes here
   build: {
     test: {
-      disabledAddons: [
-        '@storybook/addon-docs',
-        '@storybook/addon-essentials/docs',
-      ],
+      disabledAddons: ['@storybook/addon-docs', '@storybook/addon-essentials/docs'],
     },
   },
-}
+};
 ```
 
 ### Development scripts

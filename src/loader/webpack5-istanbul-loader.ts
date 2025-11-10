@@ -1,13 +1,13 @@
-import { Instrumenter, InstrumenterOptions } from "istanbul-lib-instrument";
-import { fromSource, fromMapFileSource } from "convert-source-map";
+import { Instrumenter, InstrumenterOptions } from 'istanbul-lib-instrument';
+import { fromSource, fromMapFileSource } from 'convert-source-map';
 
 // @ts-expect-error no types
-import * as espree from "espree";
-import fs from "fs";
-import path from "path";
-import { LoaderContext } from "webpack";
+import * as espree from 'espree';
+import fs from 'fs';
+import path from 'path';
+import { LoaderContext } from 'webpack';
 
-import { AddonOptionsWebpack } from "../types";
+import { AddonOptionsWebpack } from '../types';
 
 export type Options = Partial<InstrumenterOptions> &
   AddonOptionsWebpack & {
@@ -25,19 +25,11 @@ type RawSourceMap = {
 };
 
 function sanitizeSourceMap(rawSourceMap: RawSourceMap | string): RawSourceMap {
-  return typeof rawSourceMap === "string"
-    ? JSON.parse(rawSourceMap)
-    : rawSourceMap;
+  return typeof rawSourceMap === 'string' ? JSON.parse(rawSourceMap) : rawSourceMap;
 }
 
-export default function (
-  this: LoaderContext<Options>,
-  source: string,
-  sourceMap?: RawSourceMap
-) {
-  let map = sourceMap
-    ? sanitizeSourceMap(sourceMap)
-    : getInlineSourceMap.call(this, source);
+export default function (this: LoaderContext<Options>, source: string, sourceMap?: RawSourceMap) {
+  let map = sourceMap ? sanitizeSourceMap(sourceMap) : getInlineSourceMap.call(this, source);
   const options = this.getOptions();
   const callback = this.async();
 
@@ -60,19 +52,13 @@ export default function (
  * If the source code has an inline base64-encoded source map,
  * then this function decodes it, parses it, and returns it.
  */
-function getInlineSourceMap(
-  this: LoaderContext<Options>,
-  source: string
-): RawSourceMap | undefined {
+function getInlineSourceMap(this: LoaderContext<Options>, source: string): RawSourceMap | undefined {
   try {
     // Check for an inline source map
     const inlineSourceMap =
       fromSource(source) ||
       fromMapFileSource(source, function (filename) {
-        return fs.readFileSync(
-          path.resolve(path.dirname(this.resourcePath), filename),
-          "utf-8"
-        );
+        return fs.readFileSync(path.resolve(path.dirname(this.resourcePath), filename), 'utf-8');
       });
 
     if (inlineSourceMap) {
@@ -81,12 +67,7 @@ function getInlineSourceMap(
     }
   } catch (e) {
     // Exception is thrown by fromMapFileSource when there is no source map file
-    if (
-      e instanceof Error &&
-      e.message.includes(
-        "An error occurred while trying to read the map file at"
-      )
-    ) {
+    if (e instanceof Error && e.message.includes('An error occurred while trying to read the map file at')) {
       this.emitWarning(e);
     } else {
       throw e;

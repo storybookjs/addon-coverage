@@ -1,28 +1,28 @@
 module.exports = {
   presets: [
     [
-      "@babel/preset-env",
+      '@babel/preset-env',
       {
         shippedProposals: true,
-        useBuiltIns: "usage",
-        corejs: "3",
-        targets: { node: "14" },
+        useBuiltIns: 'usage',
+        corejs: '3',
+        targets: { node: '14' },
       },
     ],
-    "@babel/preset-typescript",
-    "@babel/preset-react",
+    '@babel/preset-typescript',
+    '@babel/preset-react',
   ],
   env: {
     esm: {
       presets: [
         [
-          "@babel/preset-env",
+          '@babel/preset-env',
           {
             shippedProposals: true,
-            useBuiltIns: "usage",
-            corejs: "3",
+            useBuiltIns: 'usage',
+            corejs: '3',
             modules: false,
-            targets: { chrome: "100" },
+            targets: { chrome: '100' },
           },
         ],
       ],

@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Enable Corepack
         run: corepack enable
 
@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-node@v4
 
       - name: Build coverage addon
-        run: | 
+        run: |
           yarn install
           yarn build
 
@@ -32,4 +32,3 @@ jobs:
           npx playwright install --with-deps
           yarn test-storybook:ci-coverage
         working-directory: examples/vite
-
