@@ -23,14 +23,18 @@ jobs:
 
       - name: Run tests in webpack example
         run: |
-          yarn install --immutable false
+          yarn install
           npx playwright install --with-deps
           yarn test-storybook:ci-coverage
         working-directory: examples/webpack5
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
       - name: Run tests in vite example
         run: |
-          yarn install --immutable false
+          yarn install
           npx playwright install --with-deps
           yarn test-storybook:ci-coverage
         working-directory: examples/vite
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
