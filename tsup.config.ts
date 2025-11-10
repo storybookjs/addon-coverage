@@ -15,5 +15,11 @@ export default defineConfig({
   format: ['esm'],
   target: [...BROWSER_TARGET, ...NODE_TARGET],
   platform: 'node',
-  external: [...globalManagerPackages, ...globalPreviewPackages, './loader/webpack5-istanbul-loader', 'webpack'],
+  external: [
+    ...globalManagerPackages,
+    ...globalPreviewPackages,
+    './loader/webpack5-istanbul-loader',
+    'webpack',
+    '@storybook/addon-coverage',
+  ],
 });
