@@ -1,3 +1,16 @@
+# v3.0.0 (Mon Nov 10 2025)
+
+#### 💥 Breaking Change
+
+- upgrade to sb10 and esm-only [#55](https://github.com/storybookjs/addon-coverage/pull/55) ([@ndelangen](https://github.com/ndelangen) [@yannbf](https://github.com/yannbf))
+
+#### Authors: 2
+
+- Norbert de Langen ([@ndelangen](https://github.com/ndelangen))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v2.0.0 (Thu Jun 12 2025)
 
 #### 💥 Breaking Change
