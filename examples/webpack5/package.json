@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "type": "module",
   "author": "",
   "scripts": {
     "dev": "webpack serve --open",
     "build": "webpack build",
-    "storybook": "npx storybook dev -p 6006",
-    "build-storybook": "npx storybook build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "test-storybook": "test-storybook --coverage",
     "test-storybook:ci-coverage": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"yarn build-storybook --quiet && npx serve storybook-static -l 6006\" \"wait-on tcp:6006 && yarn test-storybook --coverage\""
   },
@@ -29,15 +30,12 @@
   },
   "devDependencies": {
     "@storybook/addon-coverage": "portal:../..",
-    "@storybook/addon-essentials": "^8.4.7",
-    "@storybook/addon-interactions": "^8.4.7",
     "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
-    "@storybook/react": "^8.4.7",
-    "@storybook/react-webpack5": "^8.4.7",
-    "@storybook/test": "^8.4.7",
-    "@storybook/test-runner": "^0.21.0",
+    "@storybook/react": "^10.0.6",
+    "@storybook/react-webpack5": "^10.0.6",
+    "@storybook/test-runner": "^0.24.1",
     "concurrently": "^9.1.0",
-    "storybook": "^8.4.7",
+    "storybook": "",
     "wait-on": "^8.0.1"
   },
   "packageManager": "yarn@4.5.3"

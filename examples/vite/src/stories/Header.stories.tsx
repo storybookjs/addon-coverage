@@ -1,7 +1,7 @@
 import type { StoryFn, Meta } from '@storybook/react';
 
 import { Header } from './Header';
-import { expect } from '@storybook/test';
+import { expect } from 'storybook/test';
 
 export default {
   title: 'Example/Header',

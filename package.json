@@ -42,6 +42,7 @@
   "devDependencies": {
     "@types/convert-source-map": "^2.0.3",
     "@types/istanbul-lib-instrument": "^1.7.7",
+    "@types/node": "^22",
     "@types/test-exclude": "^6.0.2",
     "auto": "^11.1.1",
     "concurrently": "^6.2.0",

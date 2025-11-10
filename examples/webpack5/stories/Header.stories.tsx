@@ -1,6 +1,6 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
-import { expect } from '@storybook/test';
+import { expect } from 'storybook/test';
 
 import { Header } from './Header';
 

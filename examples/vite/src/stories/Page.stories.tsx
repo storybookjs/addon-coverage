@@ -1,5 +1,5 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import { within, userEvent, expect } from '@storybook/test';
+import { within, userEvent, expect } from 'storybook/test';
 import { Page } from './Page';
 
 export default {

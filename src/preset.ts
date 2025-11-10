@@ -1,3 +1,5 @@
+import { fileURLToPath } from 'node:url';
+
 import type { Options } from 'storybook/internal/types';
 import { defaultExclude, defaultExtensions } from './constants';
 import type { AddonOptionsVite, AddonOptionsWebpack } from './types';
@@ -50,7 +52,7 @@ export const webpackFinal = async (webpackConfig: Record<string, any>, options: 
 
   webpackConfig.module.rules.unshift({
     test: new RegExp(extensions?.join('|').replace(/\./g, '\\.')),
-    loader: import.meta.resolve('@storybook/addon-coverage/loader/webpack5-istanbul-loader'),
+    loader: fileURLToPath(import.meta.resolve('@storybook/addon-coverage/loader/webpack5-istanbul-loader')),
     enforce: 'post',
     options: {
       ...(options.istanbul ?? {}),

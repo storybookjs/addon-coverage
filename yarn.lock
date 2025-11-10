@@ -1878,6 +1878,7 @@ __metadata:
     "@types/convert-source-map": "npm:^2.0.3"
     "@types/istanbul-lib-coverage": "npm:^2.0.4"
     "@types/istanbul-lib-instrument": "npm:^1.7.7"
+    "@types/node": "npm:^22"
     "@types/test-exclude": "npm:^6.0.2"
     auto: "npm:^11.1.1"
     concurrently: "npm:^6.2.0"
@@ -2094,6 +2095,15 @@ __metadata:
   version: 15.12.1
   resolution: "@types/node@npm:15.12.1"
   checksum: 10c0/ad8de3ffd291d4c2d85b18294de441dc1048207cbe485f119efe766676741aafa93071b0bd5f1dbc124a6725e4ab7daf2645121bee0064b1de2605bd008834c3
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^22":
+  version: 22.19.0
+  resolution: "@types/node@npm:22.19.0"
+  dependencies:
+    undici-types: "npm:~6.21.0"
+  checksum: 10c0/66b98fcd38efb4ae58c628d61fed2b8f17c830eb665d8bceabc4174cae1dd81b8e4caac4c70d7dc929f9f76a3dc46cb21f480e904d0b898297bd12c0a2d1571a
   languageName: node
   linkType: hard
 
@@ -6579,6 +6589,13 @@ __metadata:
   version: 5.2.0
   resolution: "typical@npm:5.2.0"
   checksum: 10c0/1cceaa20d4b77a02ab8eccfe4a20500729431aecc1e1b7dc70c0e726e7966efdca3bf0b4bee285555b751647e37818fd99154ea73f74b5c29adc95d3c13f5973
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~6.21.0":
+  version: 6.21.0
+  resolution: "undici-types@npm:6.21.0"
+  checksum: 10c0/c01ed51829b10aa72fc3ce64b747f8e74ae9b60eafa19a7b46ef624403508a54c526ffab06a14a26b3120d055e1104d7abe7c9017e83ced038ea5cf52f8d5e04
   languageName: node
   linkType: hard
 

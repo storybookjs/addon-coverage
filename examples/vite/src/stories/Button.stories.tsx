@@ -1,7 +1,7 @@
 import type { StoryFn, Meta } from '@storybook/react';
 
 import { Button } from './Button';
-import { expect } from '@storybook/test';
+import { expect } from 'storybook/test';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
