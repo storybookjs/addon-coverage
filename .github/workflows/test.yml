@@ -14,21 +14,23 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
 
+      - name: Install dependencies
+        run: yarn install
+
       - name: Build coverage addon
         run: |
-          yarn install
           yarn build
 
       - name: Run tests in webpack example
         run: |
-          yarn install
+          yarn install --immutable false
           npx playwright install --with-deps
           yarn test-storybook:ci-coverage
         working-directory: examples/webpack5
 
       - name: Run tests in vite example
         run: |
-          yarn install
+          yarn install --immutable false
           npx playwright install --with-deps
           yarn test-storybook:ci-coverage
         working-directory: examples/vite
