@@ -1,3 +1,15 @@
+# v3.0.1 (Wed Mar 18 2026)
+
+#### 🐛 Bug Fix
+
+- add support for Storybook 10.4 alpha [#56](https://github.com/storybookjs/addon-coverage/pull/56) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v3.0.0 (Mon Nov 10 2025)
 
 #### 💥 Breaking Change
