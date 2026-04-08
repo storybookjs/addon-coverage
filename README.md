@@ -22,7 +22,7 @@ Tools to support code coverage in Storybook and the [Storybook test runner](http
 Install this addon by adding the `@storybook/addon-coverage` dependency:
 
 ```sh
-yarn add -D @storybook/addon-coverage
+pnpm add -D @storybook/addon-coverage
 ```
 
 And by registering it in your `.storybook/main.js`:
@@ -121,14 +121,14 @@ export default {
 
 ### Development scripts
 
-- `yarn start` runs babel in watch mode
-- `yarn build` build and package your addon code
+- `pnpm start` runs tsup in watch mode
+- `pnpm build` builds and packages the addon
 
 To run the examples, choose one of the projects in the `examples` directory then run:
 
-- `yarn` to install dependencies and link the addon locally
-- `yarn storybook` to run Storybook
-- `yarn test-storybook --coverage` to test coverage report generation
+- `pnpm install` to install dependencies and link the addon locally
+- `pnpm storybook` to run Storybook
+- `pnpm test-storybook --coverage` to test coverage report generation
 
 ### License
 

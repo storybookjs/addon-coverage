@@ -2,39 +2,41 @@ name: Tests
 
 on: [push, pull_request]
 
+env:
+  CI: true
+  COREPACK_INTEGRITY_KEYS: 0
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Enable Corepack
-        run: corepack enable
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          node-version: 24
+
+      - name: Enable corepack (for pnpm)
+        run: corepack enable
 
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install --frozen-lockfile
 
       - name: Build coverage addon
-        run: |
-          yarn build
+        run: pnpm build
 
       - name: Run tests in webpack example
         run: |
-          yarn install
+          pnpm install --frozen-lockfile
           npx playwright install --with-deps
-          yarn test-storybook:ci-coverage
+          pnpm test-storybook:ci-coverage
         working-directory: examples/webpack5
-        env:
-          YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
       - name: Run tests in vite example
         run: |
-          yarn install
+          pnpm install --frozen-lockfile
           npx playwright install --with-deps
-          yarn test-storybook:ci-coverage
+          pnpm test-storybook:ci-coverage
         working-directory: examples/vite
-        env:
-          YARN_ENABLE_IMMUTABLE_INSTALLS: false

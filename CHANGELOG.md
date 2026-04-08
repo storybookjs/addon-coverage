@@ -1,4 +1,6 @@
-# v3.0.1 (Wed Mar 18 2026)
+# @storybook/addon-coverage
+
+## v3.0.1 (Wed Mar 18 2026)
 
 #### 🐛 Bug Fix
 
@@ -10,7 +12,7 @@
 
 ---
 
-# v3.0.0 (Mon Nov 10 2025)
+## v3.0.0 (Mon Nov 10 2025)
 
 #### 💥 Breaking Change
 
@@ -23,7 +25,7 @@
 
 ---
 
-# v2.0.0 (Thu Jun 12 2025)
+## v2.0.0 (Thu Jun 12 2025)
 
 #### 💥 Breaking Change
 
@@ -39,7 +41,7 @@
 
 ---
 
-# v1.0.5 (Tue Dec 24 2024)
+## v1.0.5 (Tue Dec 24 2024)
 
 #### 🐛 Bug Fix
 
@@ -51,7 +53,7 @@
 
 ---
 
-# v1.0.4 (Fri May 24 2024)
+## v1.0.4 (Fri May 24 2024)
 
 #### 🐛 Bug Fix
 
@@ -63,7 +65,7 @@
 
 ---
 
-# v1.0.3 (Tue May 07 2024)
+## v1.0.3 (Tue May 07 2024)
 
 #### 🐛 Bug Fix
 
@@ -75,7 +77,7 @@
 
 ---
 
-# v1.0.2 (Tue May 07 2024)
+## v1.0.2 (Tue May 07 2024)
 
 #### 🐛 Bug Fix
 
@@ -87,7 +89,7 @@
 
 ---
 
-# v1.0.1 (Wed Feb 28 2024)
+## v1.0.1 (Wed Feb 28 2024)
 
 #### 🐛 Bug Fix
 
@@ -104,7 +106,7 @@
 
 ---
 
-# v1.0.0 (Tue Nov 14 2023)
+## v1.0.0 (Tue Nov 14 2023)
 
 ### Release Notes
 
@@ -130,7 +132,7 @@
 
 ---
 
-# v0.0.9 (Thu Jul 20 2023)
+## v0.0.9 (Thu Jul 20 2023)
 
 #### ⚠️ Pushed to `main`
 
@@ -142,7 +144,7 @@
 
 ---
 
-# v0.0.8 (Mon Feb 06 2023)
+## v0.0.8 (Mon Feb 06 2023)
 
 #### 🐛 Bug Fix
 
@@ -154,7 +156,7 @@
 
 ---
 
-# v0.0.7 (Mon Nov 21 2022)
+## v0.0.7 (Mon Nov 21 2022)
 
 #### 🐛 Bug Fix
 
@@ -166,7 +168,7 @@
 
 ---
 
-# v0.0.6 (Mon Nov 21 2022)
+## v0.0.6 (Mon Nov 21 2022)
 
 #### 🐛 Bug Fix
 
@@ -179,7 +181,7 @@
 
 ---
 
-# v0.0.5 (Mon Oct 10 2022)
+## v0.0.5 (Mon Oct 10 2022)
 
 ### Release Notes
 
@@ -205,7 +207,7 @@ The addon now supports Vite projects out of the box! If you had a custom instrum
 
 ---
 
-# v0.0.4 (Mon Aug 15 2022)
+## v0.0.4 (Mon Aug 15 2022)
 
 #### 🐛 Bug Fix
 
@@ -217,7 +219,7 @@ The addon now supports Vite projects out of the box! If you had a custom instrum
 
 ---
 
-# v0.0.3 (Wed Aug 10 2022)
+## v0.0.3 (Wed Aug 10 2022)
 
 #### 🐛 Bug Fix
 
@@ -229,7 +231,7 @@ The addon now supports Vite projects out of the box! If you had a custom instrum
 
 ---
 
-# v0.0.2 (Mon Jul 11 2022)
+## v0.0.2 (Mon Jul 11 2022)
 
 #### 🐛 Bug Fix
 
@@ -241,7 +243,7 @@ The addon now supports Vite projects out of the box! If you had a custom instrum
 
 ---
 
-# v0.0.1 (Tue Jun 21 2022)
+## v0.0.1 (Tue Jun 21 2022)
 
 #### 🐛 Bug Fix
 
