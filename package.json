@@ -32,11 +32,13 @@
     "*.d.ts"
   ],
   "scripts": {
-    "prebuild": "yarn clean",
+    "clean": "rimraf dist",
+    "prebuild": "pnpm clean",
     "build": "tsup",
     "format": "prettier --write .",
-    "release": "yarn build && auto shipit",
-    "start": "yarn build --watch"
+    "changeset": "changeset",
+    "release": "pnpm build && changeset publish",
+    "start": "pnpm build --watch"
   },
   "dependencies": {
     "@istanbuljs/load-nyc-config": "^1.1.0",
@@ -49,22 +51,25 @@
     "vite-plugin-istanbul": "^6.0.2"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.2",
+    "@changesets/cli": "^2.29.8",
     "@types/convert-source-map": "^2.0.3",
     "@types/istanbul-lib-instrument": "^1.7.7",
     "@types/node": "^22",
     "@types/test-exclude": "^6.0.2",
-    "auto": "^11.1.1",
     "concurrently": "^6.2.0",
+    "pkg-pr-new": "^0.0.63",
     "prettier": "^3.6.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "rimraf": "^6.1.2",
     "storybook": "^10.0.0 || ^10.0.0-0 || ^10.2.0-0 || ^10.3.0-0 || ^10.4.0-0",
     "tsup": "^8.3.5",
     "typescript": "^5.9.3",
     "vite": "^7.2.2",
     "webpack": "^5.97.1"
   },
-  "packageManager": "yarn@4.5.3",
+  "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
   "publishConfig": {
     "access": "public",
     "provenance": true,
@@ -81,5 +86,10 @@
       "svelte"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }

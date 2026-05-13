@@ -11,7 +11,7 @@
     "dev": "webpack serve --open",
     "storybook": "storybook dev -p 6006",
     "test-storybook": "test-storybook --coverage",
-    "test-storybook:ci-coverage": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"yarn build-storybook --quiet && npx serve storybook-static -l 6006\" \"wait-on tcp:6006 && yarn test-storybook --coverage\""
+    "test-storybook:ci-coverage": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"pnpm build-storybook --quiet && npx serve storybook-static -l 6006\" \"wait-on tcp:6006 && pnpm test-storybook --coverage\""
   },
   "dependencies": {
     "@babel/core": "latest",
@@ -29,7 +29,6 @@
     "webpack-dev-server": "latest"
   },
   "devDependencies": {
-    "@storybook/addon-coverage": "portal:../..",
     "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
     "@storybook/react": "^10.0.6",
     "@storybook/react-webpack5": "^10.0.6",
@@ -38,5 +37,10 @@
     "storybook": "",
     "wait-on": "^8.0.1"
   },
-  "packageManager": "yarn@4.5.3"
+  "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
 }
