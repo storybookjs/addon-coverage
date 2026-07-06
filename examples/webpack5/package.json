@@ -14,12 +14,13 @@
     "test-storybook:ci-coverage": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"yarn build-storybook --quiet && npx serve storybook-static -l 6006\" \"wait-on tcp:6006 && yarn test-storybook --coverage\""
   },
   "dependencies": {
-    "@babel/core": "latest",
-    "@babel/preset-typescript": "latest",
+    "@babel/core": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "@babel/preset-react": "^7.29.7",
+    "@babel/preset-typescript": "^7.29.7",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "babel-loader": "latest",
-    "babel-preset-react-app": "latest",
     "html-webpack-plugin": "latest",
     "react": "^18",
     "react-dom": "^18",
