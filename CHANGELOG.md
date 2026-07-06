@@ -1,3 +1,15 @@
+# v3.0.2 (Mon Jul 06 2026)
+
+#### 🐛 Bug Fix
+
+- broaden to support 10.5 alphas [#58](https://github.com/storybookjs/addon-coverage/pull/58) ([@ndelangen](https://github.com/ndelangen))
+
+#### Authors: 1
+
+- Norbert de Langen ([@ndelangen](https://github.com/ndelangen))
+
+---
+
 # v3.0.1 (Wed Mar 18 2026)
 
 #### 🐛 Bug Fix
